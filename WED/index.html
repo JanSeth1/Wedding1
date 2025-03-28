@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazel & Wilfran III Wedding</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-overlay"></div>
+    <nav class="navbar">
+        <a href="#home" class="logo">H & W</a>
+        <div class="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#venue">The Venue</a></li>
+            <li><a href="#timetable">Timetable</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+            <li><a href="#login" class="login-link">Log In</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-divider"></div>
+    
+    <!-- Remove the decorative divider if you have it -->
+    <!-- <div class="decorative-divider">
+        <span>✦</span>
+    </div> -->
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hazel & Wilfran III Are<br>Getting Married!</h1>
+                <p class="subheading">Join Us for Our Celebration of Love</p>
+                <button class="rsvp-button">RSVP Now</button>
+            </div>
+            <div class="hero-image">
+                <!-- Hero image is added via CSS background-image -->
+            </div>
+        </div>
+    </header>
+
+    <section id="save-the-date" class="save-date-section">
+        <div class="save-date-content">
+            <h2 class="fade-in">Save the Date!</h2>
+            <p class="save-date-message fade-in delay-1">Please mark 1.3.2025 on your calendars! We want you with us as we say "I do."</p>
+            
+            <div class="date-details-container">
+                <div class="date-detail slide-up delay-1">
+                    <div class="detail-divider"></div>
+                    <h3>Date</h3>
+                    <p class="detail-value">1.3.2025</p>
+                </div>
+                
+                <div class="date-detail slide-up delay-2">
+                    <div class="detail-divider"></div>
+                    <h3>Time</h3>
+                    <p class="detail-value">18:30</p>
+                </div>
+                
+                <div class="date-detail slide-up delay-3">
+                    <div class="detail-divider"></div>
+                    <h3>Location</h3>
+                    <p class="detail-value">The Old Chapel</p>
+                    <p>500 Terry Francine St.</p>
+                    <p>San Francisco CA 94158</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="details section">
+        <h2>Wedding Details</h2>
+        <div class="details-container">
+            <div class="detail-item">
+                <i class="icon">📅</i>
+                <p><strong>Date:</strong> June 15, 2025</p>
+            </div>
+            <div class="detail-item">
+                <i class="icon">⏰</i>
+                <p><strong>Time:</strong> 4:00 PM</p>
+            </div>
+            <div class="detail-item">
+                <i class="icon">📍</i>
+                <p><strong>Location:</strong> Rosewood Garden, California</p>
+            </div>
+            <button onclick="viewMap()" class="map-button">View on Map</button>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery section">
+        <h2>Our Moments</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="photo1.jpg" alt="Venue">
+                <p class="caption">Our Venue</p>
+            </div>
+            <div class="gallery-item">
+                <img src="photo2.jpg" alt="Couple">
+                <p class="caption">Our Journey</p>
+            </div>
+            <div class="gallery-item">
+                <img src="photo3.jpg" alt="Ceremony">
+                <p class="caption">Our Ceremony</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="rsvp section">
+        <h2>RSVP</h2>
+        <form id="rsvp-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <select required>
+                <option value="">Will you attend?</option>
+                <option value="yes">Yes, I'll be there!</option>
+                <option value="no">Regretfully decline</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-column">
+            <div class="footer-logo">Hazel & Wilfran III</div>
+            <p class="footer-email">info@mysite.com</p>
+            <span class="footer-divider">✦</span>
+        </div>
+        
+        <div class="footer-column">
+            <h3>The Old Chapel</h3>
+            <p>500 Terry Francine St.</p>
+            <p>San Francisco CA 94158</p>
+        </div>
+        
+        <div class="footer-column">
+            <ul class="footer-nav">
+                <li><a href="#venue">The Venue</a></li>
+                <li><a href="#timetable">Timetable</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <ul class="footer-nav">
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#accessibility">Accessibility Statement</a></li>
+            </ul>
+        </div>
+        
+        <div class="copyright">
+            © 2025 by Hazel & Wilfran III.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
