@@ -143,15 +143,14 @@ nav.hidden {
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    background-color: var(--beige); /* Changed to match body background */
+    background-color: var(--beige);
     padding: 0;
-    margin: 0 auto; /* Add auto margin to center */
-    max-width: 95%; /* Full width to blend with page */
+    margin: 0 auto;
+    max-width: 95%;
     position: relative;
     overflow: hidden;
-    border-top: 2px solid var(--gold);
-    border-bottom: 2px solid var(--gold); /* Added matching border at bottom */
     margin-top: 100px;
+    border-bottom: 2px solid var(--gold);
 }
 
 .hero-content {
@@ -216,31 +215,35 @@ nav.hidden {
   
 .rsvp-button {
     display: inline-block;
-    padding: 10px 24px;
-    background: transparent;
-    color: var(--text-dark);
+    width: 100px; /* Set a width for the button */
+    height: 100px; /* Set a height for the button */
+    background: var(--cream); /* Background color */
+    color: var(--text-dark); /* Text color */
     text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    border: 1px solid var(--text-dark);
-    cursor: pointer;
-    margin-top: 20px;
+    border-radius: 50%; /* Make the button circular */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    font-size: 16px; /* Adjust font size */
+    text-align: center; /* Center text inside the button */
+    line-height: 80px; /* Center text vertically */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    border: none; /* Remove border */
+    font-weight: bold; /* Make text bold */
+    margin-top: 30px;
 }
   
 .rsvp-button:hover {
-    background: var(--text-dark);
-    color: var(--white);
-    transform: none;
-    box-shadow: none;
+    background: #d4b26a; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
 }
 
 .section {
-    padding: 80px 20px;
+    padding: 10px 20px;
     text-align: center;
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 95%;
+    border-bottom: 2px solid var(--gold);
 }
 
 /* Adding decorative elements inspired by the Chris & Elaine design */
@@ -327,6 +330,160 @@ nav.hidden {
     background-color: var(--gold);
 }
 
+.save-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center other items */
+    justify-content: flex-start; /* Align items to the top */
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: var(--beige);
+    width: 95%; /* Set width to 95% */
+    margin: 0 auto; /* Center the section */
+    max-width: 90%; /* Optional: Set a max width */
+}
+
+.save-date-container {
+    width: 100%; /* Set width to 100% to span the entire container */
+    padding: 0; /* Remove padding to align with the left */
+    text-align: left; /* Align text to the left */
+    margin-left: 0; /* Align to the leftmost side */
+}
+
+.save-date h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 46x;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.save-date-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--text-dark);
+    margin-bottom: 60px;
+    text-align: left; /* Align message to the left */
+}
+
+.save-date-details {
+    display: flex;
+    justify-content: center; /* Centers all columns */
+    align-items: flex-start;
+    text-align: center; /* Centers text */
+    max-width: 1000px; /* Adjust width to control layout */
+    margin: 0 auto; /* Centers the whole section */
+    font-family: 'Georgia', serif;
+    color: #5a4634;
+    gap: 350px; /* Increase space between columns */
+}
+
+.detail-column {
+    flex: 1;
+    min-width: 200px; /* Ensures a balanced layout */
+    max-width: 300px; /* Prevents excessive stretching */
+    padding: 10px 20px;
+    position: relative;
+}
+
+.detail-column h3 {
+    font-size: 28px;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.detail-column p {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.detail-column .address {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.detail-column::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Centers the line */
+    height: 2px;
+    background-color: #5a4634;
+}
+
+.save-date-image {
+    background-image: url('images/Hari-Ballroom1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 90vw;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.save-date-image:hover {
+    transform: scale(1.02);
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.lightbox-close:hover {
+    color: var(--gold);
+}
+
+.save-date-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.save-date-image:hover img {
+    transform: scale(1.02);
+}
+
 .details-container {
     max-width: 800px;
     margin: 0 auto;
@@ -356,42 +513,51 @@ nav.hidden {
     color: var(--dusty-blue);
 }
 
+.gallery {
+    text-align: center;
+    padding: 40px 20px; /* Adjust padding as needed */
+}
+
+.gallery h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; /* Adjust font size as needed */
+    color: var(--text-dark);
+    margin-bottom: 10px; /* Space between title and paragraph */
+}
+
+.gallery p {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; /* Adjust font size as needed */
+    color: var(--text-dark);
+    margin-bottom: 40px; /* Space below the paragraph */
+}
+
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 0 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Space between images */
+    min-height: 300px; /* Set a minimum height for the gallery grid */
+    margin-bottom: 30px;
 }
 
 .gallery-item {
-    position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    border: 4px solid var(--white);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 4/3; /* Maintain aspect ratio */
+    min-height: 250px; /* Set a minimum height for each gallery item */
+    height: 300px; /* Set a fixed height for each gallery item */
 }
 
 .gallery-item img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.gallery-item:hover img {
+.gallery-item img:hover {
     transform: scale(1.05);
-}
-
-.caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(29, 53, 87, 0.8);
-    color: var(--white);
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
 }
 
 .rsvp {
@@ -399,7 +565,7 @@ nav.hidden {
     padding: 80px 20px;
     width: 95%;
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 95%;
 }
 
 #rsvp-form {
@@ -428,19 +594,6 @@ nav.hidden {
     outline: none;
 }
 
-.rsvp button {
-    background: var(--gold);
-    color: var(--white);
-    cursor: pointer;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    border: none;
-}
-
-.rsvp button:hover {
-    background: #c4a25a;
-    transform: translateY(-2px);
-}
 
 footer {
     background: var(--peach);
@@ -515,144 +668,6 @@ footer {
     margin-top: 30px;
     border-top: 1px solid var(--divider-color);
     font-size: 14px;
-}
-
-
-
-/* Save the Date Section */
-.save-date-section {
-    padding: 100px 40px;
-    background-color: var(--white);
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1400px;
-}
-
-.save-date-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.save-date-content::after {
-    content: "";
-    position: absolute;
-    bottom: -40px;
-    left: 60px;  /* Match the left padding of hero-content */
-    right: 50px; /* Align with where the image ends */
-    height: 1px;
-    background-color: var(--divider-color);
-}
-
-.save-date-section h2 {
-    font-size: 48px;
-    color: var(--text-dark);
-    margin-bottom: 20px;
-    font-weight: 400;
-    text-align: left;
-    font-family: 'Playfair Display', serif;
-}
-
-.save-date-section h2::after {
-    display: none;
-}
-
-.save-date-message {
-    font-size: 16px;
-    margin-bottom: 60px;
-    color: var(--text-dark);
-    text-align: left;
-    max-width: 600px;
-}
-
-.date-details-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    border-top: 1px solid var(--divider-color);
-    padding-top: 40px;
-}
-
-.date-detail {
-    flex: 1;
-    min-width: 250px;
-    margin: 20px 40px 20px 0;
-    text-align: left;
-}
-
-.detail-divider {
-    width: 100%;
-    height: 1px;
-    background-color: var(--navy-blue);
-    opacity: 0.2;
-    margin-bottom: 20px;
-}
-
-.date-detail h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: var(--text-dark);
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.detail-value {
-    font-size: 28px;
-    color: var(--text-dark);
-    margin-bottom: 10px;
-    font-weight: 400;
-    font-family: 'Playfair Display', serif;
-}
-
-.date-detail p {
-    margin: 5px 0;
-    color: var(--text-dark);
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* Parallax effect - new implementation */
-.parallax-wrapper {
-    width: 100%;
-    height: 500px;
-    margin-top: 80px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.parallax-image {
-    position: absolute;
-    top: -200px;
-    left: 0;
-    right: 0;
-    bottom: -200px; /* Extra space for parallax movement */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-/* You can remove or comment out the previous parallax styles */
-.save-date-image {
-    width: 100%;
-    margin-top: 80px;
-    height: 600px; /* Increased height for better parallax effect */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed !important;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transform: translateZ(0);
-    will-change: transform;
-    z-index: 1;
-    overflow: hidden; /* Prevent any potential overflow issues */
-    -webkit-transform: translate3d(0,0,0); /* For Safari */
-    /* Missing background-image property */
 }
 
 /* Animations */
@@ -895,6 +910,174 @@ footer {
 
 nav.top-page {
     border-bottom: none;
+}
+
+.schedule-text {
+    width: 100%; /* Set width to 100% to span the entire container */
+    padding: 0; /* Remove padding to align with the left */
+    text-align: left; /* Align text to the left */
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+.schedule-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 46px; /* Adjust font size as needed */
+    color: var(--text-dark);
+    margin-bottom: 10px; /* Space between title and paragraph */
+}
+
+.schedule-text p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; /* Adjust font size as needed */
+    color: var(--text-dark);
+}
+
+.details {
+    text-align: center;
+}
+
+.schedule-item {
+    margin: 80px 0; /* Space between items */
+}
+
+.schedule-item h3 {
+    display: block;
+    align-items: center; /* Aligns icon and text */
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; /* Adjust font size as needed */
+    color: var(--text-dark);
+}
+
+.schedule-item p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; /* Adjust font size as needed */
+    color: var(--text-dark);
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000; /* Ensure this is high enough */
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-dark);
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.lightbox-prev {
+    left: 20px; /* Position to the left */
+}
+
+.lightbox-next {
+    right: 20px; /* Position to the right */
+}
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.registry {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    padding: 60px 20px;
+    background-color: var(--beige);
+}
+
+.registry-content {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    max-width: 100%; /* Allow full width */
+    text-align: left; /* Align text to the left */
+}
+
+.registry-item {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align items to the left */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove auto margin */
+}
+
+.registry-image {
+    max-width: 30%; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 90px; /* Space between image and text */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.registry-text {
+    max-width: 50%; /* Adjust as needed */
+    text-align: left; /* Align text to the left */
+}
+
+.registry h2 {
+    font-family: 'Playfair Display', serif; /* Add the font family */
+    font-size: 42px; /* Match the font size */
+    color: var(--navy-blue); /* Match the color */
+    margin-bottom: 20px; /* Match the margin */
+}
+
+.registry p {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+}
+
+.registry-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: transparent; /* Set background to transparent */
+    color: var(--gold); /* Change text color to gold */
+    text-decoration: none;
+    border: 2px solid var(--gold); /* Add a border with gold color */
+    border-radius: 40px;
+    transition: background 0.3s, color 0.3s; /* Smooth transition for hover effects */
+    font-size: 16px;
+}
+
+.registry-button:hover {
+    background: var(--gold); /* Change background to gold on hover */
+    color: var(--white); /* Change text color to white on hover */
+}
+
+.parallax-image {
+    height: 400px; /* Adjust height as needed */
+    background-attachment: fixed; /* Enable parallax effect */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    width: 100%; /* Full width */
+    margin-top: 20px; /* Space above the image */
+}
+
+/* General h2 styles */
+h2 {
+    font-family: 'Playfair Display', serif; /* Use the same font family */
+    font-size: 42px; /* Set a consistent font size */
+    color: var(--navy-blue); /* Use a consistent color */
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: center; /* Center align if needed */
 }
 
 

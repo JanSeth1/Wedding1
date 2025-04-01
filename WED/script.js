@@ -135,34 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const heroImage = document.querySelector('.hero-image');
     const heroSection = document.querySelector('.hero');
-    
-    let ticking = false;
-    
-    // Hero image zoom effect
-    if (heroImage && heroSection) {
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    const scrolled = window.pageYOffset;
-                    const heroHeight = heroSection.offsetHeight;
-                    
-                    // Calculate how far we've scrolled through the hero section
-                    const scrollProgress = Math.min(scrolled / heroHeight, 1);
-                    
-                    // Apply zoom effect based on scroll position
-                    if (scrollProgress > 0) {
-                        heroImage.style.transform = `scale(${1 + (scrollProgress * 0.1)})`;
-                    } else {
-                        heroImage.style.transform = 'scale(1)';
-                    }
-                    
-                    ticking = false;
-                });
-                
-                ticking = true;
-            }
-        });
-    }
 
     // Navbar scroll behavior
     const nav = document.querySelector('nav');
@@ -192,5 +164,52 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const lightbox = document.getElementById("image-lightbox");
+    const lightboxImage = document.querySelector(".lightbox-image");
+    const lightboxClose = document.querySelector(".lightbox-close");
+    const lightboxPrev = document.querySelector(".lightbox-prev");
+    const lightboxNext = document.querySelector(".lightbox-next");
+    const lightboxTriggers = document.querySelectorAll(".lightbox-trigger");
+
+    let currentIndex = 0; // To keep track of the current image index
+    const images = Array.from(lightboxTriggers).map(trigger => trigger.getAttribute("href"));
+
+    lightboxTriggers.forEach((trigger, index) => {
+        trigger.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            currentIndex = index; // Set the current index
+            lightboxImage.src = images[currentIndex]; // Set the lightbox image source
+            lightbox.classList.add("active"); // Show the lightbox
+        });
+    });
+
+    lightboxClose.addEventListener("click", function () {
+        lightbox.classList.remove("active"); // Hide the lightbox
+    });
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+            lightbox.classList.remove("active"); // Hide the lightbox
+        }
+    });
+
+    // Next button functionality
+    lightboxNext.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent the lightbox from closing
+        currentIndex = (currentIndex + 1) % images.length; // Loop back to the first image
+        lightboxImage.src = images[currentIndex]; // Update the image source
+    });
+
+    // Previous button functionality
+    lightboxPrev.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent the lightbox from closing
+        currentIndex = (currentIndex - 1 + images.length) % images.length; // Loop back to the last image
+        lightboxImage.src = images[currentIndex]; // Update the image source
     });
 });
