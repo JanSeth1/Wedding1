@@ -1,19 +1,60 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll("nav a");
-    navLinks.forEach(link => {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
+    // Handle page transitions for all navigation links
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    let isTransitioning = false;
+
+    function handleNavClick(e) {
+        e.preventDefault();
+        if (isTransitioning) return;
+        
+        const targetHref = this.getAttribute('href');
+        if (targetHref.startsWith('#')) {
+            // For same-page navigation, just scroll
+            const targetElement = document.querySelector(targetHref);
             if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 60,
-                    behavior: "smooth"
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
-        });
+            return;
+        }
+        
+        // Set transition state and preserve hover effects
+        isTransitioning = true;
+        document.body.style.pointerEvents = 'auto';
+        
+        // Add a small delay before transition to ensure hover effects work
+        setTimeout(() => {
+            document.body.classList.add('page-transition');
+            
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 400);
+        }, 50);
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', handleNavClick);
     });
+
+    // Reset transition state when page loads
+    window.addEventListener('pageshow', function() {
+        isTransitioning = false;
+        document.body.classList.remove('page-transition');
+    });
+
+    // Handle page transition for entourage link
+    const entourageLink = document.querySelector('.registry-button');
+    if (entourageLink) {
+        entourageLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetHref = this.getAttribute('href');
+            document.body.classList.add('page-transition');
+            
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 600);
+        });
+    }
+
 
     // Active link functionality
     const menuLinks = document.querySelectorAll(".nav-menu li a");
@@ -95,16 +136,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     // Intersection Observer for animations
-    const animatedElements = document.querySelectorAll(".fade-in, .slide-up");
-    const observer = new IntersectionObserver(entries => {
+    const elementsToAnimate = document.querySelectorAll('.hero, .section, .save-date, .detail-column, .dress-code');
+
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible'); // Remove class when out of view
             }
         });
-    }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0.1 });
 
-    animatedElements.forEach(element => {
+    elementsToAnimate.forEach(element => {
         observer.observe(element);
     });
 
@@ -165,10 +209,110 @@ document.addEventListener("DOMContentLoaded", function () {
         
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
+
+    const sections = document.querySelectorAll('.section');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target); // Stop observing after it becomes visible
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                heroObserver.unobserve(entry.target); // Stop observing after it becomes visible
+            }
+        });
+    }, { threshold: 0.1 });
+
+    if (heroSection) {
+        heroObserver.observe(heroSection);
+    }
+
+    const textElements = document.querySelectorAll('.fade-in');
+
+    const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible'); // Remove class when out of view
+            }
+        });
+    }, { threshold: 0.1 });
+
+    textElements.forEach(element => {
+        textObserver.observe(element);
+    });
 });
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Handle page transitions for all navigation links
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    let isTransitioning = false;
+
+    function handleNavClick(e) {
+        e.preventDefault();
+        if (isTransitioning) return;
+        
+        const targetHref = this.getAttribute('href');
+        if (targetHref.startsWith('#')) {
+            // For same-page navigation, just scroll
+            const targetElement = document.querySelector(targetHref);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+            return;
+        }
+        
+        // Set transition state and preserve hover effects
+        isTransitioning = true;
+        document.body.style.pointerEvents = 'auto';
+        
+        // Add a small delay before transition to ensure hover effects work
+        setTimeout(() => {
+            document.body.classList.add('page-transition');
+            
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 400);
+        }, 50);
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', handleNavClick);
+    });
+
+    // Reset transition state when page loads
+    window.addEventListener('pageshow', function() {
+        isTransitioning = false;
+        document.body.classList.remove('page-transition');
+    });
+
+    // Handle page transition for entourage link
+    const entourageLink = document.querySelector('.registry-button');
+    if (entourageLink) {
+        entourageLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetHref = this.getAttribute('href');
+            document.body.classList.add('page-transition');
+            
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 600);
+        });
+    }
+
     const lightbox = document.getElementById("image-lightbox");
     const lightboxImage = document.querySelector(".lightbox-image");
     const lightboxClose = document.querySelector(".lightbox-close");
@@ -213,3 +357,31 @@ document.addEventListener("DOMContentLoaded", function () {
         lightboxImage.src = images[currentIndex]; // Update the image source
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const elements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing after it becomes visible
+            }
+        });
+    });
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+});
+
+function adjustHeroImageWidth() {
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+        heroImage.style.width = window.innerWidth + 'px';
+    }
+}
+
+// Adjust the hero image width on page load and window resize
+window.addEventListener('load', adjustHeroImageWidth);
+window.addEventListener('resize', adjustHeroImageWidth);
